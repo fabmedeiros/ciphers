@@ -7,9 +7,6 @@ class Caesar(Cipher):
     '''
     Cifra de Cesar
     '''
-    def __init__(self):
-        self.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
     def encrypt(self, texto_plano, key=3):
         '''
         Retorna o texto_plano cifrado com a cifra de Cesar,
@@ -20,8 +17,10 @@ class Caesar(Cipher):
         cipher_text = ''
         texto_plano = self.format_str(texto_plano)
         for char in texto_plano:
-            if char in self.letters:
-                idx = self.letters.find(char)
+            #if char in self.letters:
+            if char in Cipher.plain_alphabet:
+                #idx = self.letters.find(char)
+                idx = Cipher.plain_alphabet.find(char)
                 cipher_text += alfabeto_cifrado[idx]
         return cipher_text
 

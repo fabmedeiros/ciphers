@@ -2,5 +2,6 @@ __all__  = [
     'caesar',
     'hebrew',
     'railfence',
-    'scytale'
+    'scytale',
+    'simple_substitution'
 ]

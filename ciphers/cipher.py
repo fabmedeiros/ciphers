@@ -4,6 +4,7 @@
 
 class Cipher(object):
     """ Classe base para as cifras classicas """
+    plain_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     def format_str(self, text):
         '''

@@ -7,9 +7,6 @@ class HebrewCipher(Cipher):
     albam = 'NOPQRSTUVWXYZABCDEFGHIJKLM'
     atbah = 'IHGFNDCBARQPOEMLKJZYXWVUTS'
 
-    def __init__(self):
-        self.plain = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
     def encrypt(self, text, cipher):
         '''
         Retorna o texto cifrado com a cifra hebraica escolhida
@@ -17,7 +14,7 @@ class HebrewCipher(Cipher):
         txt = ''
         text = self.format_str(text)
         for ch in text:
-            idx = self.plain.find(ch)
+            idx = Cipher.plain_alphabet.find(ch)
             txt += cipher[idx]
         return txt
 
