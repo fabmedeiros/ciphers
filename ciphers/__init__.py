@@ -1,4 +1,5 @@
 __all__  = [
+    'alberti',
     'caesar',
     'hebrew',
     'polybius',
