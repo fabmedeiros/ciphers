@@ -5,5 +5,6 @@ __all__  = [
     'polybius',
     'railfence',
     'scytale',
-    'simple_substitution'
+    'simple_substitution',
+    'trithemius'
 ]
