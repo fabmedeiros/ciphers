@@ -12,14 +12,12 @@ class Caesar(Cipher):
         Retorna o texto_plano cifrado com a cifra de Cesar,
         utlizando a chave key, cujo padrao e 3.
         '''
-        alfabeto_cifrado = self.shift_alphabet(self.letters, key)
+        alfabeto_cifrado = self.shift_alphabet(Cipher.plain_alphabet, key)
 
         cipher_text = ''
         texto_plano = self.format_str(texto_plano)
         for char in texto_plano:
-            #if char in self.letters:
             if char in Cipher.plain_alphabet:
-                #idx = self.letters.find(char)
                 idx = Cipher.plain_alphabet.find(char)
                 cipher_text += alfabeto_cifrado[idx]
         return cipher_text
