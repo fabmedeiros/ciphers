@@ -2,7 +2,7 @@ from cipher import Cipher
 """ Implementacao das Cifras Hebraicas Atbash, Albam e Atbah """
 
 
-class HebrewCipher(Cipher):
+class Hebrew(Cipher):
     atbash = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
     albam = 'NOPQRSTUVWXYZABCDEFGHIJKLM'
     atbah = 'IHGFNDCBARQPOEMLKJZYXWVUTS'
