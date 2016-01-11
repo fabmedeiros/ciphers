@@ -12,6 +12,7 @@ class Alberti(Cipher):
         self.movable_disk = None
         self.fixed_key = ''
         self.movable_key = ''
+        self.decrypting = False
 
     def set_fixed_disk(self, plain_alphabet):
         '''
@@ -37,7 +38,7 @@ class Alberti(Cipher):
         shift = -(fixed_id - movable_id)
         self.movable_disk = self.shift_alphabet(self.movable_disk, shift)
 
-    def encrypt(self, plaintext, shift=0, decrypt=False):
+    def encrypt(self, plaintext, shift=0):
         '''
         Cifra o plaintext com a cifra de Alberti.
         '''
@@ -52,7 +53,7 @@ class Alberti(Cipher):
                 self.set_keys(self.fixed_key, movable_key)
             else:
                 #letra minuscula
-                if decrypt:
+                if self.decrypting:
                     #decifrando
                     i = self.movable_disk.find(char)
                     char = self.fixed_disk[i].lower()
@@ -70,8 +71,10 @@ class Alberti(Cipher):
         '''
         Decifra utilizando a cifra de Alberti.
         '''
+        self.decrypting = True
         text = ''
-        plaintext = self.encrypt(ciphertext, shift, True)
+        plaintext = self.encrypt(ciphertext, shift)
+        self.decrypting = False
         for char in plaintext:
             if char.islower():
                 text += char
