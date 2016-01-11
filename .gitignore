@@ -1,2 +1,6 @@
 *.pyc
 *.old
+build
+tests
+*.egg
+*.egg-info
