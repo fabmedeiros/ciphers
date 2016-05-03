@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
+from .cipher import Cipher
 """ Implementacao da Cifra Scytale """
-
 
 class Scytale(Cipher):
     def encrypt(self, texto, key):

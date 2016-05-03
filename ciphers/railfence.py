@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
+from .cipher import Cipher
 """ implementacao da cifra Railfence """
-
 
 class Railfence(Cipher):
     ''' Cifra railfence '''

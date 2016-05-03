@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
+from .cipher import Cipher
 """ Implementacao da Cifra de Cesar """
 
 

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
-
+from .cipher import Cipher
 
 class Vigenere(Cipher):
     """ Cifra de Vigenere """
@@ -9,7 +8,7 @@ class Vigenere(Cipher):
         Repete a password ate o tamanho de text
         '''
         if len(password) < len(text):
-            new_pass = password * (len(text)/len(password))
+            new_pass = password * (len(text)//len(password))
             if len(new_pass):
                 new_pass += password[:len(new_pass)]
             return new_pass.upper()

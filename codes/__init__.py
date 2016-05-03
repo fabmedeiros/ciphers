@@ -1,5 +1,5 @@
 from codes.morse import Morse
 
-__all__  = [
+__all__ = [
     'Morse'
 ]

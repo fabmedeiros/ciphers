@@ -4,3 +4,4 @@ build
 tests
 *.egg
 *.egg-info
+docs/.ipynb_checkpoints/

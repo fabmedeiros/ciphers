@@ -1,5 +1,5 @@
 #cifra de substituicao simples
-from cipher import Cipher
+from .cipher import Cipher
 
 class SimpleSubstitution(Cipher):
     def __init__(self):

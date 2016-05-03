@@ -26,7 +26,7 @@ class Morse(object):
         code = morsecode.split(' ')
         text = ''
         for item in code:
-            for key, value in self.morse_code.iteritems():
+            for key, value in self.morse_code.items():
                 if item == value:
                     text += key
                     break

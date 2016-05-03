@@ -1,6 +1,5 @@
-from cipher import Cipher
+from .cipher import Cipher
 """ Implementacao das Cifras Hebraicas Atbash, Albam e Atbah """
-
 
 class Hebrew(Cipher):
     atbash = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'

@@ -1,21 +1,22 @@
-from ciphers.alberti import Alberti
-from ciphers.caesar import Caesar
-from ciphers.della_porta import DellaPorta
-from ciphers.hebrew import Hebrew
-from ciphers.polybius import Polybius
-from ciphers.railfence import Railfence
-from ciphers.scytale import Scytale
-from ciphers.simple_substitution import SimpleSubstitution
-from ciphers.trithemius import Trithemius
-from ciphers.vigenere import Vigenere
+from .alberti import Alberti
+from .caesar import Caesar
+from .della_porta import DellaPorta
+from .hebrew import Hebrew
+from .polybius import Polybius
+from .railfence import Railfence
+from .scytale import Scytale
+from .simple_substitution import SimpleSubstitution
+from .trithemius import Trithemius
+from .vigenere import Vigenere
 
 from codes.morse import Morse
 
-__all__  = [
+__all__ = [
     'Alberti',
     'Caesar',
     'DellaPorta',
     'Hebrew',
+    'Morse',
     'Polybius',
     'Railfence',
     'Scytale',

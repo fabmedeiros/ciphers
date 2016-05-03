@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
+from .cipher import Cipher
 
 class DellaPorta(Cipher):
     ''' Cifra criptografica de Giambattista della Porta '''
@@ -26,7 +26,7 @@ class DellaPorta(Cipher):
 
     def repeat_password(self, password, length):
         ''' Repete a password ate o tamanho do texto plano '''
-        new_pass = password * (length/len(password))
+        new_pass = password * (length//len(password))
         length -= len(new_pass)
         if length:
             new_pass += password[:length]
@@ -40,8 +40,7 @@ class DellaPorta(Cipher):
         password = self.format_str(
             self.repeat_password(password, len(plaintext))
         )
-        for idx in range(len(plaintext)):
-            char = plaintext[idx]
+        for idx, char in enumerate(plaintext):
             cipheralphabet = self.shift(password[idx])
             if char in plainalphabet:
                 idchar = plainalphabet.find(char)
