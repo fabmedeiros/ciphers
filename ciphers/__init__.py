@@ -2,6 +2,7 @@ from .alberti import Alberti
 from .caesar import Caesar
 from .della_porta import DellaPorta
 from .hebrew import Hebrew
+from .playfair import Playfair
 from .polybius import Polybius
 from .railfence import Railfence
 from .scytale import Scytale
@@ -17,6 +18,7 @@ __all__ = [
     'DellaPorta',
     'Hebrew',
     'Morse',
+    'Playfair',
     'Polybius',
     'Railfence',
     'Scytale',

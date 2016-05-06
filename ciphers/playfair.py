@@ -8,10 +8,10 @@ class Playfair(Cipher):
         decrypt - se True, decifra; se False, cifra
         """
         ciphertext = ''
-        # checa se o texto contera par de letras iguais
-        text = self.check_double(text)
         text = text.upper()
         text = text.replace('J', 'I').replace(' ', '')
+        # checa se o texto contem par de letras iguais
+        text = self.check_double(text)
         # se text nao tiver numero par de letras
         if len(text) % 2:
             text += 'W'
@@ -27,11 +27,9 @@ class Playfair(Cipher):
 
     def check_double(self, text):
         out = ''
-        if len(text) % 2:
-            text += 'W'
         for idx in range(0, len(text), 2):
             pair = text[idx:idx+2]
-            if pair[0] == pair[1]:
+            if len(pair) > 1 and pair[0] == pair[1]:
                 out += pair[0] + 'W' + pair[1]
             else:
                 out += pair
