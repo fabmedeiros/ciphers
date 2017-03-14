@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import shuffle
 """ Classe com metodos basicos para cifras classicas """
 
 class Cipher(object):
@@ -14,25 +15,35 @@ class Cipher(object):
         '''Retorna alphabet com deslocamento de valor shift'''
         return alphabet[shift:] + alphabet[:shift]
 
-    def create_square(self, key = '', alphanum = False, replace = ['J', 'I'], sequence = False):
-        """Retorna um alfabeto numa matriz de num x num
+    def create_square(self, alphabet = [], key = '', alphanum = False, replace = ['J', 'I'], sequence = False):
+        """ Retorna um alfabeto numa matriz de num x num
         Por padrao, retorna uma matriz formada pelo alfabeto ABCDEFGHIKLMNOPQRSTUVWXYZ
+        Se key, retorna um square com key iniciando o square
+        alphanum square com letras e numeros
+        replace letras a serem trocadas, so funciona se for usado somente o alfabeto
+        sequence se True continua a preencher o square a partir do ultimo caracter da key
         """
         square = []
-        if alphanum:
-            num = 6
+        if alphabet:
+            if alphanum:
+                replace = ['', '']
+            # num = 5
+            alfabeto = alphabet
+        elif alphanum:
+            # num = 6
             alfabeto = self.plain_alphanum
             replace = ['', '']
         else:
-            num = 5
+            # num = 5
             alfabeto = self.plain_alphabet
-        alfabeto = self.create_alphabet(key, alfabeto, replace, sequence)
+        alfabeto = self.create_alphabet(key.upper(), alfabeto, replace, sequence)##
+        num = 5 + len(alfabeto) % 5
         for idx in range(0, len(alfabeto), num):
             square.append(alfabeto[idx:idx + num])
         return square
 
     def create_alphabet(self, key = '', alfabeto = plain_alphabet, replace = ['', ''], sequence = False):
-        '''Retorna um alfabeto com key como chave e no inicio do alfabeto'''
+        """ Retorna um alfabeto com key como chave e no inicio do alfabeto """
         if key:
             key = key.upper()
             temp = ''
@@ -50,3 +61,12 @@ class Cipher(object):
             if ch_key in cipher:
                 cipher = cipher.replace(ch_key, '')
         return key + cipher
+
+    def random_alphabet(self, alphanum=False):
+        """ Retorna um alfabeto aleatório """
+        if alphanum:
+            alfabeto = list(self.create_alphabet(alfabeto=self.plain_alphanum))
+        else:
+            alfabeto = list(self.create_alphabet())
+        shuffle(alfabeto)
+        return ''.join(alfabeto)
