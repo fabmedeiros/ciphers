@@ -1,3 +1,4 @@
+from .adfgx import ADFGX
 from .alberti import Alberti
 from .caesar import Caesar
 from .della_porta import DellaPorta
@@ -9,10 +10,10 @@ from .scytale import Scytale
 from .simple_substitution import SimpleSubstitution
 from .trithemius import Trithemius
 from .vigenere import Vigenere
-
 from codes.morse import Morse
 
 __all__ = [
+    'ADFGX',
     'Alberti',
     'Caesar',
     'DellaPorta',

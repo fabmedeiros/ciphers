@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-
-from cipher import Cipher
+""" Cifra ADFGX """
+from .cipher import Cipher
 
 class ADFGX(Cipher):
+    """ Cifra ADFGX """
     def __init__(self):
         self.chars = {
             'A': 0, 'D': 1, 'F': 2,
@@ -63,6 +64,7 @@ class ADFGX(Cipher):
         return ciphertext
 
     def decrypt(self, text, key):
+        """ Decifra texto cifrado com a cifra ADFGX """
         extra = ''
         tam = len(text) % len(key)
         if tam:
@@ -88,27 +90,3 @@ class ADFGX(Cipher):
         for _ in range(0, len(adfgx), 2):
             plain += self.get_letter(adfgx[_:_+2])
         return plain
-
-    def show_square(self):
-        """ """
-        keys = sorted(self.chars.keys())
-        lista = ''
-        header = ' '
-        show = ''
-        for idx, key in enumerate(keys):
-            header += '|' + key
-            for letra in self.square[idx]:
-                lista += letra + '|'
-            show += key + '|' + lista + '\n'
-            lista = ''
-        header += '|\n'
-        return header + show
-
-if __name__ == '__main__':
-    cifra = ADFGX()
-    alfabeto = 'ZCBDMHAOINLRSPQWXEUTYFGKV'
-    cifra.create_square(alfabeto)
-    cifra.set_replace('J', 'I')
-    cifrado = cifra.encrypt('FABIO mariano de medeiros hoje', 'SENHADF')
-    print(cifrado)
-    print(cifra.decrypt(cifrado, 'SENHADF'))
