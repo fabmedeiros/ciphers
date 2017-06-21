@@ -1,3 +1,4 @@
+from .adfgvx import ADFGVX
 from .adfgx import ADFGX
 from .alberti import Alberti
 from .caesar import Caesar
@@ -13,6 +14,7 @@ from .vigenere import Vigenere
 from codes.morse import Morse
 
 __all__ = [
+    'ADFGVX',
     'ADFGX',
     'Alberti',
     'Caesar',
