@@ -38,6 +38,7 @@ class ADFGX(Cipher):
     def encrypt(self, text, key):
         """ Cifra o texto com a cifra ADFGX """
         text = self.format_str(text)
+        key = self.key_repeated(key)
         if self.replace:
             if self.replace[0] in text:
                 text = text.replace(self.replace[0], self.replace[1])
@@ -66,6 +67,7 @@ class ADFGX(Cipher):
     def decrypt(self, text, key):
         """ Decifra texto cifrado com a cifra ADFGX """
         extra = ''
+        key = self.key_repeated(key)
         tam = len(text) % len(key)
         if tam:
             extra = key[:tam]
