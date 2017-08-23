@@ -45,12 +45,7 @@ class Cipher(object):
     def create_alphabet(self, key = '', alfabeto = plain_alphabet, replace = ['', ''], sequence = False):
         """ Retorna um alfabeto com key como chave e no inicio do alfabeto """
         if key:
-            key = key.upper()
-            temp = ''
-            for ch in key:
-                if ch not in temp:
-                    temp += ch
-            key = temp
+            key = key_repeated(key)
             if replace[0] in key:
                 key = key.replace(replace[0], replace[1])
             if sequence:
@@ -70,3 +65,11 @@ class Cipher(object):
             alfabeto = list(self.create_alphabet())
         shuffle(alfabeto)
         return ''.join(alfabeto)
+
+    def key_repeated(self, key):
+        ''' Remove caracteres repetidos da senha key '''
+        temp = ''
+        for ch in key.upper():
+            if ch not in temp:
+                temp += ch
+        return temp
