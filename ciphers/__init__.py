@@ -1,6 +1,7 @@
 from .adfgvx import ADFGVX
 from .adfgx import ADFGX
 from .alberti import Alberti
+from .bifid import Bifid
 from .caesar import Caesar
 from .della_porta import DellaPorta
 from .hebrew import Hebrew
@@ -17,6 +18,7 @@ __all__ = [
     'ADFGVX',
     'ADFGX',
     'Alberti',
+    'Bifid',
     'Caesar',
     'DellaPorta',
     'Hebrew',

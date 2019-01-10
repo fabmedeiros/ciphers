@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from cipher import Cipher
+from .cipher import Cipher
 
 class Bifid(Cipher):
     def encrypt(self, plaintext, alphabet=None):
@@ -34,7 +34,3 @@ class Bifid(Cipher):
             plain += matriz[int(linhas[i]) - 1][int(colunas[i]) - 1]
         return plain
 
-bifid = Bifid()
-cifrado = bifid.encrypt('OTREMPARTEASDEZ', 'PLNCYZSMUETBXWVQOAJDKRGFHI')
-print(cifrado)
-print(bifid.decrypt(cifrado, 'PLNCYZSMUETBXWVQOAJDKRGFHI'))
