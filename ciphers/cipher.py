@@ -45,7 +45,7 @@ class Cipher(object):
     def create_alphabet(self, key = '', alfabeto = plain_alphabet, replace = ['', ''], sequence = False):
         """ Retorna um alfabeto com key como chave e no inicio do alfabeto """
         if key:
-            key = key_repeated(key)
+            key = self.key_repeated(key)
             if replace[0] in key:
                 key = key.replace(replace[0], replace[1])
             if sequence:
