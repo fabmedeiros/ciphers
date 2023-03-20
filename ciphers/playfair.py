@@ -16,7 +16,7 @@ class Playfair(Cipher):
         if len(text) % 2:
             text += 'W'
         # cria a tabela
-        self.square = self.create_square(key)
+        self.square = self.create_square(key = key)
         for i in range(0, len(text), 2):
              ciphertext += self.change_pair(text[i:i + 2], decrypt)
         return ciphertext.upper()
