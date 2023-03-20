@@ -18,13 +18,17 @@ class Trifid(Cipher):
         }
         return squares
     
-    def encrypt(self, plaintext, alphabet=None):
+    def encrypt(self, plaintext, alphabet=''):
         quads = ''
         lines = ''
         cols = ''
         ciphertext = ''
         plaintext = plaintext.upper()
-        square = self._create_squares(alphabet)
+        if alphabet:
+            square = self._create_squares(alphabet)
+        else:
+            square = self._create_squares(self.create_alphabet())
+        print(square)
         ### busca letra dentro do tres quadrados
         for letra in plaintext:
             for quad in square.keys():
@@ -43,10 +47,13 @@ class Trifid(Cipher):
             ciphertext += square[quad][line][col]
         return ciphertext
 
-    def decrypt(self, ciphertext, alphabet=None):
+    def decrypt(self, ciphertext, alphabet=''):
         text = ciphertext.upper()
         cipher_num = ''
-        square = self._create_squares(alphabet)
+        if alphabet:
+            square = self._create_squares(alphabet)
+        else:
+            square = self._create_squares(self.create_alphabet())
         ### busca letra dentro do tres quadrados
         for letra in text:
             for quad in square.keys():
@@ -65,3 +72,19 @@ class Trifid(Cipher):
                 item += squares[lin][col]
             plaintext += square[item[0]][int(item[1]) - 1][int(item[2]) - 1]
         return plaintext
+
+def run():
+    cifra = Trifid()
+    cifrado = cifra.encrypt('o trem parte as dez')
+    print(cifrado)
+    print(cifra.decrypt(cifrado))
+
+    alfabeto = 'ZRBIX+EFAUMDHTWJKYCVSLONPQG'
+    cifrado = cifra.encrypt('otremparteasdez', alfabeto)
+    print(cifrado)
+    print(cifra.decrypt(cifrado, alfabeto))
+
+    alfabeto = cifra.create_alphabet('senha')
+    cifrado = cifra.encrypt('otremparteasdez', alfabeto)
+    print(cifrado)
+    print(cifra.decrypt(cifrado, alfabeto))

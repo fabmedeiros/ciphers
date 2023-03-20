@@ -3,35 +3,46 @@ from .cipher import Cipher
 """ Implementacao da Cifra Scytale """
 
 class Scytale(Cipher):
-    def encrypt(self, texto, key):
-        '''
-        Cifra o texto com a cifra scytale utilizando a chave key.
-        '''
-        cifrado = ''
-        texto = self.format_str(texto)
-        # calcula a qtd de caracteres e a qtd de colunas
-        qtd_ch = len(texto)
-        col = qtd_ch // key
-        if qtd_ch % key > 0:
-            col += 1
-        # preencher string com caracteres adicionais
-        i = ord('A')
-        while len(texto) < key * col:
-            texto += chr(i)
-            i += 1
-        # cifragem
-        for i in range(col):
-            for j in range(0, qtd_ch, col):
-                cifrado += texto[i + j]
-        return cifrado.upper()
+    def encrypt(self, plaintext, key):
+        ''' Cifra o texto com a cifra scytale utilizando a chave key. '''
+        square = []
+        plaintext = self.format_str(plaintext)
+        idx = 0
+        lines = len(plaintext) // key
+        if len(plaintext) % key:
+           lines += 1
+        for lin in range(lines):
+            square.append([])
+            for col in range(key):
+                if len(plaintext) > idx:
+                    square[lin].append(plaintext[idx])
+                else:
+                    square[lin].append('')
+                idx += 1
+        ciphertext = ''.join([square[lin][col] for col in range(key) for lin in range(lines)])
+        return ciphertext
 
-    def decrypt(self, texto, key):
-        '''
-        Decifra o texto cifrado com a cifra Scytale usando a chave key.
-        '''
-        texto_plano = ''
-        texto = self.format_str(texto)
-        for i in range(key):
-            for j in range(0, len(texto), key):
-                texto_plano += texto[i + j]
-        return texto_plano.lower()
+    def decrypt(self, ciphertext, key):
+        ''' Decifra o ciphertext com a cifra Scytale usando a chave key. '''
+        idx = 0
+        ciphertext = self.format_str(ciphertext)
+        lines = len(ciphertext) // key
+        if len(ciphertext) % key:
+            lines += 1
+        # quantidade de colunas completas
+        spaces = len(ciphertext) % key
+        square = [['' for col in range(key)] for lin in range(lines)]
+        for col in range(key):
+            for lin in range(lines):
+                if len(ciphertext) > idx:
+                    if not spaces and lin >= lines - 1:
+                        # executa caso a coluna ao seja completa
+                        square[lin][col] = ''
+                        idx -= 1
+                    else:
+                        square[lin][col] = ciphertext[idx]
+                idx += 1
+            if spaces:
+                spaces -= 1
+        plaintext = ''.join([square[lin][col] for lin in range(lines) for col in range(key)])
+        return plaintext
