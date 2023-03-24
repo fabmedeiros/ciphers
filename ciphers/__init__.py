@@ -12,7 +12,7 @@ from .scytale import Scytale
 from .simple_substitution import SimpleSubstitution
 from .trithemius import Trithemius
 from .vigenere import Vigenere
-from codes.morse import Morse
+#from codes.morse import Morse
 
 __all__ = [
     'ADFGVX',
@@ -22,7 +22,7 @@ __all__ = [
     'Caesar',
     'DellaPorta',
     'Hebrew',
-    'Morse',
+    #'Morse',
     'Playfair',
     'Polybius',
     'Railfence',
