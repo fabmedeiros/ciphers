@@ -11,8 +11,9 @@ cifra = Playfair()
 print(cifra.decrypt(text, 'DRSEU'))
 
 st.write(text)
-texto = st.text_input('Texto cifrado')
+ciphertext = st.text_input('Texto cifrado')
+password = st.text_input('Senha')
+
 if st.button('Clique'):
-    st.write(cifra.decrypt(text, 'DRSEU'))
     st.text('CIFRAGEM')
-    st.write(cifra.decrypt(texto, 'DRSEU'))
+    st.write(cifra.decrypt(ciphertext, password))
